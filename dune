@@ -1,3 +1,7 @@
 (data_only_dirs _esy esy.lock node_modules flow-typed scripts test-e2e site)
 
+(env
+ (release-static
+   (flags (-ccopt -static))))
+
 (vendored_dirs vendors)
