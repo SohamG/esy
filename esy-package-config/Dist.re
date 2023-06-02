@@ -245,7 +245,10 @@ module Parse = {
     let make = path => {
       let path = Path.(normalizeAndRemoveEmptySeg(v(path)));
       let (path, manifest) =
-        switch ((Sys.is_directory (Path.show(path)), ManifestSpec.ofString(Path.basename(path)))) {
+        switch (
+          Sys.is_directory(Path.show(path)),
+          ManifestSpec.ofString(Path.basename(path)),
+        ) {
         | (true, _) => (path, None)
         | (false, Ok(manifest)) =>
           let path = Path.(remEmptySeg(parent(path)));
